@@ -18,7 +18,7 @@
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/favicon.ico">
+  <link rel="icon" href="./static/images/favicon.svg">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -77,15 +77,26 @@
           <h1 class="title is-1 publication-title">Learning Stylized Humanoid Locomotion with Adversarial Motion Priors</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="https://www.michaelpiseno.com/">Michael Piseno</a><sup>1</sup>,</span>
+                <a href="https://www.michaelpiseno.com/">Michael Piseno</a><sup>1</sup>,
+            </span>
             <span class="author-block">
-              <a href="https://zyliatzju.github.io/">Zhongyu Li</a><sup>2</sup>,</span>
-              <span class="author-block">
-                <a href="https://www.escontrela.me/">Alejandro Escontrela</a><sup>2</sup>,</span>
+                <a href="https://zyliatzju.github.io/">Zhongyu Li</a><sup>2</sup>,
+            </span>
             <span class="author-block">
-                <a href="https://xbpeng.github.io/">Xue Bin Peng</a><sup>3</sup>,</span>
+                <a href="https://www.escontrela.me/">Alejandro Escontrela</a><sup>2</sup>,
+            </span>
             <span class="author-block">
-              <a href="https://twitter.com/atiliscen?lang=en">Atil Iscen</a><sup>4</sup></span>
+                <a href="https://people.eecs.berkeley.edu/~pabbeel/">Pieter Abbeel</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+                <a href="https://me.berkeley.edu/people/koushil-sreenath/">Koushil Sreenath</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+                <a href="https://xbpeng.github.io/">Xue Bin Peng</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+                <a href="https://twitter.com/atiliscen?lang=en">Atil Iscen</a><sup>4</sup>
+            </span>
           </div>
 
           <div class="is-size-5 publication-authors">
@@ -93,13 +104,6 @@
             <span class="author-block"><sup>2</sup>University of California, Berkeley,</span>
             <span class="author-block"><sup>3</sup>Simon Fraser University,</span>
             <span class="author-block"><sup>4</sup>DeepMind</span>
-          </div>
-
-          <div class="container has-text-centered" style="margin-top: 10px;">
-            *<b>Full author list coming soon...</b>
-          </div>
-          <div class="container has-text-centered" style="margin-top: 10px;">
-            *<b>Full paper coming soon...</b>
           </div>
 
           </div>
@@ -115,7 +119,7 @@
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
+        <h3 class="title is-3">Abstract</h3>
         <div class="content has-text-justified">
           <p>
             Obtaining controllers for high-dimensional continuous control of humanoid robots remains a challenging problem. Reinforcement learning has shown promise as a general method for learning locomotion controllers across a diverse range of different motions and in different environments, however specifying a reward function and transferring to real hardware remain open challenges. In this work, we build upon Adversarial Motion Priors (AMP) and introduce a framework that learns a reward function using a small amount of motion capture data. Using this reward function, we are able to learn a single multi-task controller for humanoid locomotion that produces natural-looking behavior for several different motions. Moreover, our controller produces energy-efficient motions without explicitly optimizing for such terms, is able to transition smoothly between different motions, and is capable of deploying on real hardware using a custom domain randomization procedure.
@@ -139,36 +143,148 @@
   </div>
 </section>
 
+<section class="section">
+    <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+
+                <h3 class="title is-3 pb-4">Natural-Looking Skills</h3>
+
+                <!-- Digit -->
+                <div class="container py-2" style="border-radius: 5px;">
+                    <h5 class="subtitle is-5">Digit (Agility Robotics)</h5>
+                    <div class="columns is-centered">
+                        <div class="column content has-text-centered">
+                            <p>Walk</p>
+                            <video controls autoplay loop muted preload playsinline style="border-radius: 5px;">
+                                <source src="./static/videos/stanford_digit_walk.mp4" type="video/mp4" />
+                            </video>
+                        </div>
+                        <div class="column content has-text-centered">
+                            <p>Jog</p>
+                            <video controls autoplay loop muted preload playsinline style="border-radius: 5px;">
+                                <source src="./static/videos/stanford_digit_jog.mp4" type="video/mp4" />
+                            </video>
+                        </div>
+                        <div class="column content has-text-centered">
+                            <p>Cat-Walk</p>
+                            <video controls autoplay loop muted preload playsinline style="border-radius: 5px;">
+                                <source src="./static/videos/stanford_digit_catwalk.mp4" type="video/mp4" />
+                            </video>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Cassie -->
+                <div class="container py-2" style="border-radius: 5px;">
+                    <h5 class="subtitle is-5">Cassie (Agility Robotics)</h5>
+                    <div class="columns is-centered">
+                        <div class="column content has-text-centered">
+                            <p>Walk</p>
+                            <video controls autoplay loop muted preload playsinline style="border-radius: 5px;">
+                                <source src="./static/videos/cassie_walk.mp4" type="video/mp4" />
+                            </video>
+                        </div>
+                        <div class="column content has-text-centered">
+                            <p>Jog</p>
+                            <video controls autoplay loop muted preload playsinline style="border-radius: 5px;">
+                                <source src="./static/videos/cassie_jog.mp4" type="video/mp4" />
+                            </video>
+                        </div>
+                        <div class="column content has-text-centered">
+                            <p>Cat-Walk</p>
+                            <video controls autoplay loop muted preload playsinline style="border-radius: 5px;">
+                                <source src="./static/videos/cassie_catwalk.mp4" type="video/mp4" />
+                            </video>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- XRobot -->
+                <div class="container py-2" style="border-radius: 5px;">
+                    <h5 class="subtitle is-5">XRobot (UC Berkeley)</h5>
+                    <div class="columns is-centered">
+                        <div class="column content has-text-centered">
+                            <p>Walk</p>
+                            <video controls autoplay loop muted preload playsinline style="border-radius: 5px;">
+                                <source src="./static/videos/xrobot_walk.mp4" type="video/mp4" />
+                            </video>
+                        </div>
+                        <div class="column content has-text-centered">
+                            <p>Jog</p>
+                            <video controls autoplay loop muted preload playsinline style="border-radius: 5px;">
+                                <source src="./static/videos/xrobot_jog.mp4" type="video/mp4" />
+                            </video>
+                        </div>
+                        <div class="column content has-text-centered">
+                            <p>Cat-Walk</p>
+                            <video controls autoplay loop muted preload playsinline style="border-radius: 5px;">
+                                <source src="./static/videos/xrobot_catwalk.mp4" type="video/mp4" />
+                            </video>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Orca I -->
+                <div class="container py-2" style="border-radius: 5px;">
+                    <h5 class="subtitle is-5">Orca I (Cyan Robotics)</h5>
+                    <div class="columns is-centered">
+                        <div class="column content has-text-centered">
+                            <p>Walk</p>
+                            <video controls autoplay loop muted preload playsinline style="border-radius: 5px;">
+                                <source src="./static/videos/orca_walk.mp4" type="video/mp4" />
+                            </video>
+                        </div>
+                        <div class="column content has-text-centered">
+                            <p>Jog</p>
+                            
+                        </div>
+                        <div class="column content has-text-centered">
+                            <p>Walk Backward</p>
+                            
+                        </div>
+                    </div>
+                </div>
+                    
+            </div>
+        </div>
+    </div>
+</section>
 
 <section class="section">
-  <div class="container is-max-desktop">
+    <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
 
-    <h2 class="title is-2" style="text-align: center;">Natural-Looking Skills</h2>
-    <div class="columns is-centered">
-      <p>
-        Using Adverarial Motion Priors (AMP) allows the robot to perform skills in the style of a human. A single multi-task policy learns all skills.
-      </p>
-    </div>
-    <div class="columns is-centered">
-      <div class="column content has-text-centered">
-        <img src="./static/gifs/stanford_digit_catwalk.gif">
-        <p>Cat-Walking</p>
-      </div>
-      <div class="column content has-text-centered">
-        <img src="./static/gifs/stanford_digit_walk.gif">
-        <p>Walking</p>
-      </div>
-      <div class="column content has-text-centered">
-        <img src="./static/gifs/stanford_digit_jog.gif">
-        <p>Jogging</p>
-      </div>
-    </div>
+                <div class="pb-4">
+                    <h3 class="title is-3">Skill Interpolation</h3>
+                    <p style="text-align: justify;">
+                    Unlike common motion tracking rewards that match per-timestep motion data, AMP rewards match the distribution of policy data to that of reference data, allowing for smooth, natural-looking transitions between motions.
+                    </p>
+                </div>
 
-  </div>
+                <div class="columns is-centered">
+                    <div class="column content has-text-centered">
+                        <p>Walk → Jog</p>
+                        <img src="./static/gifs/berkeley_digit_walk-to-jog.gif" style="border-radius: 5px;">
+                    </div>
+                    <div class="column content has-text-centered">
+                        <p>Jog → Walk</p>
+                        <img src="./static/gifs/berkeley_digit_jog-to-walk.gif" style="border-radius: 5px;">
+                    </div>
+                    <div class="column content has-text-centered">
+                        <p>Jog (increasing speed)</p>
+                        <img src="./static/gifs/berkeley_digit_increase-speed.gif" style="border-radius: 5px;">
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 
-<section class="section">
+<!-- <section class="section">
   <div class="container is-max-desktop">
 
     <h2 class="title is-2" style="text-align: center;">Skill Interpolation</h2>
@@ -193,10 +309,10 @@
     </div>
     
   </div>
-</section>
+</section> -->
 
 
-<section class="section">
+<!-- <section class="section">
   <div class="container">
     <div class="columns is-centered has-text-centered ">
       <div class="column is-two-thirds">
@@ -213,7 +329,7 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 
 <!-- <section class="section" id="BibTeX">
