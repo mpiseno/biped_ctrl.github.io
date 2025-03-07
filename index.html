@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description"
+        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+    <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Learning Stylized Humanoid Locomotion with Adversarial Motion Priors</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="icon" href="./static/images/favicon.svg">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+    <!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav> -->
+
+
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-1 publication-title">Learning Stylized Humanoid Locomotion with Adversarial
+                            Motion Priors</h1>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                <a href="https://www.michaelpiseno.com/">Michael Piseno</a><sup>1</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a href="https://zyliatzju.github.io/">Zhongyu Li</a><sup>2</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a href="https://www.escontrela.me/">Alejandro Escontrela</a><sup>2</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a href="https://people.eecs.berkeley.edu/~pabbeel/">Pieter Abbeel</a><sup>2</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a href="https://me.berkeley.edu/people/koushil-sreenath/">Koushil
+                                    Sreenath</a><sup>2</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a href="https://xbpeng.github.io/">Xue Bin Peng</a><sup>3</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a href="https://twitter.com/atiliscen?lang=en">Atil Iscen</a><sup>4</sup>
+                            </span>
+                        </div>
+
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block"><sup>1</sup>Stanford University,</span>
+                            <span class="author-block"><sup>2</sup>University of California, Berkeley,</span>
+                            <span class="author-block"><sup>3</sup>Simon Fraser University,</span>
+                            <span class="author-block"><sup>4</sup>DeepMind</span>
+                        </div>
+
+                        <div class="column has-text-centered">
+                            <div class="publication-links">
+                                <!-- PDF Link. -->
+                                <span class="link-block">
+                                    <a href="./static/_IROS_2025__AMP_Biped.pdf"
+                                        class="external-link button is-normal is-rounded is-dark" target="_blank">
+                                        <span class="icon">
+                                            <i class="fas fa-file-pdf"></i>
+                                        </span>
+                                        <span>Paper</span>
+                                    </a>
+                                </span>
+                                <!-- <span class="link-block">
+                                    <a href="https://arxiv.org/abs/2406.00960"
+                                        class="external-link button is-normal is-rounded is-dark" target="_blank">
+                                        <span class="icon">
+                                            <i class="ai ai-arxiv"></i>
+                                        </span>
+                                        <span>arXiv</span>
+                                    </a>
+                                </span> -->
+                                <!-- Video Link. -->
+                                <span class="link-block">
+                                    <a href="https://youtu.be/bkY-s6oRqls"
+                                        class="external-link button is-normal is-rounded is-dark" target="_blank">
+                                        <span class="icon">
+                                            <i class="fab fa-youtube"></i>
+                                        </span>
+                                        <span>Video</span>
+                                    </a>
+                                </span>
+                                <!-- Code Link. -->
+                                <span class="link-block">
+                                    <a href="#" class="external-link button is-normal is-rounded is-dark disabled-link" disabled>
+                                        <span class="icon">
+                                            <i class="fab fa-github"></i>
+                                        </span>
+                                        <span>Code (coming soon)</span>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h3 class="title is-3">Abstract</h3>
+                    <div class="content has-text-justified">
+                        <p>
+                            Obtaining controllers for high-dimensional continuous control of humanoid robots remains a
+                            challenging problem. Reinforcement learning has shown promise as a general method for
+                            learning locomotion controllers across a diverse range of different motions and in different
+                            environments, however specifying a reward function and transferring to real hardware remain
+                            open challenges. In this work, we build upon Adversarial Motion Priors (AMP) and introduce a
+                            framework that learns a reward function using a small amount of motion capture data. Using
+                            this reward function, we are able to learn a single multi-task controller for humanoid
+                            locomotion that produces natural-looking behavior for several different motions. Moreover,
+                            our controller produces energy-efficient motions without explicitly optimizing for such
+                            terms, is able to transition smoothly between different motions, and is capable of deploying
+                            on real hardware using a custom domain randomization procedure.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!--/ Abstract. -->
+        </div>
+    </section>
+
+    <!-- Video -->
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Video</h2>
+                    <div class="publication-video">
+                        <iframe src="https://youtu.be/bkY-s6oRqls" frameborder="0"
+                            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+
+                    <h3 class="title is-3 pb-4">Natural-Looking Skills</h3>
+
+                    <!-- Digit -->
+                    <div class="container py-2" style="border-radius: 5px;">
+                        <h5 class="subtitle is-5">Digit (Agility Robotics)</h5>
+                        <div class="columns is-centered">
+                            <div class="column content has-text-centered">
+                                <p>Walk</p>
+                                <video controls autoplay loop muted preload playsinline style="border-radius: 5px;">
+                                    <source src="./static/videos/stanford_digit_walk.mp4" type="video/mp4" />
+                                </video>
+                            </div>
+                            <div class="column content has-text-centered">
+                                <p>Jog</p>
+                                <video controls autoplay loop muted preload playsinline style="border-radius: 5px;">
+                                    <source src="./static/videos/stanford_digit_jog.mp4" type="video/mp4" />
+                                </video>
+                            </div>
+                            <div class="column content has-text-centered">
+                                <p>Cat-Walk</p>
+                                <video controls autoplay loop muted preload playsinline style="border-radius: 5px;">
+                                    <source src="./static/videos/stanford_digit_catwalk.mp4" type="video/mp4" />
+                                </video>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Cassie -->
+                    <div class="container py-2" style="border-radius: 5px;">
+                        <h5 class="subtitle is-5">Cassie (Agility Robotics)</h5>
+                        <div class="columns is-centered">
+                            <div class="column content has-text-centered">
+                                <p>Walk</p>
+                                <video controls autoplay loop muted preload playsinline style="border-radius: 5px;">
+                                    <source src="./static/videos/cassie_walk.mp4" type="video/mp4" />
+                                </video>
+                            </div>
+                            <div class="column content has-text-centered">
+                                <p>Jog</p>
+                                <video controls autoplay loop muted preload playsinline style="border-radius: 5px;">
+                                    <source src="./static/videos/cassie_jog.mp4" type="video/mp4" />
+                                </video>
+                            </div>
+                            <div class="column content has-text-centered">
+                                <p>Cat-Walk</p>
+                                <video controls autoplay loop muted preload playsinline style="border-radius: 5px;">
+                                    <source src="./static/videos/cassie_catwalk.mp4" type="video/mp4" />
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BHL -->
+                    <div class="container py-2" style="border-radius: 5px;">
+                        <h5 class="subtitle is-5">BHL (UC Berkeley)</h5>
+                        <div class="columns is-centered">
+                            <div class="column content has-text-centered">
+                                <p>Walk</p>
+                                <video controls autoplay loop muted preload playsinline style="border-radius: 5px;">
+                                    <source src="./static/videos/xrobot_walk.mp4" type="video/mp4" />
+                                </video>
+                            </div>
+                            <div class="column content has-text-centered">
+                                <p>Jog</p>
+                                <video controls autoplay loop muted preload playsinline style="border-radius: 5px;">
+                                    <source src="./static/videos/xrobot_jog.mp4" type="video/mp4" />
+                                </video>
+                            </div>
+                            <div class="column content has-text-centered">
+                                <p>Cat-Walk</p>
+                                <video controls autoplay loop muted preload playsinline style="border-radius: 5px;">
+                                    <source src="./static/videos/xrobot_catwalk.mp4" type="video/mp4" />
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- G1 I -->
+                    <div class="container py-2" style="border-radius: 5px;">
+                        <h5 class="subtitle is-5">G1 (Unitree)</h5>
+                        <div class="columns is-centered">
+                            <div class="column content has-text-centered">
+                                <p>Cat-Walk</p>
+                                <video controls autoplay loop muted preload playsinline style="border-radius: 5px;">
+                                    <source src="./static/videos/g1_catwalk.mp4" type="video/mp4" />
+                                </video>
+                            </div>
+                            <div class="column content has-text-centered">
+                                <p>Walk</p>
+                                <video controls autoplay loop muted preload playsinline style="border-radius: 5px;">
+                                    <source src="./static/videos/g1_walk.mp4" type="video/mp4" />
+                                </video>
+                            </div>
+                            <div class="column content has-text-centered">
+                                <p>Jog</p>
+                                <video controls autoplay loop muted preload playsinline style="border-radius: 5px;">
+                                    <source src="./static/videos/g1_jog.mp4" type="video/mp4" />
+                                </video>
+                            </div>
+                        </div>
+                        <div class="columns is-centered">
+                            <div class="column content has-text-centered">
+                                <!-- <p>Cat-Walk</p>
+                                <video controls autoplay loop muted preload playsinline style="border-radius: 5px;">
+                                    <source src="./static/videos/g1_catwalk.mp4" type="video/mp4" />
+                                </video> -->
+                            </div>
+                            <div class="column content has-text-centered">
+                                <p>Walk</p>
+                                <video controls autoplay loop muted preload playsinline style="border-radius: 5px;">
+                                    <source src="./static/videos/g1_walk_real.mp4" type="video/mp4" />
+                                </video>
+                            </div>
+                            <div class="column content has-text-centered">
+                                <p>Jog</p>
+                                <video controls autoplay loop muted preload playsinline style="border-radius: 5px;">
+                                    <source src="./static/videos/g1_jog_real.mp4" type="video/mp4" />
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+
+                    <div class="pb-4">
+                        <h3 class="title is-3">Skill Interpolation</h3>
+                        <p style="text-align: justify;">
+                            Unlike common motion tracking rewards that match per-timestep motion data, AMP rewards match
+                            the distribution of policy data to that of reference data, allowing for smooth,
+                            natural-looking transitions between motions.
+                        </p>
+                    </div>
+
+                    <div class="columns is-centered">
+                        <div class="column content has-text-centered">
+                            <p>Walk → Jog</p>
+                            <img src="./static/gifs/berkeley_digit_walk-to-jog.gif" style="border-radius: 5px;">
+                        </div>
+                        <div class="column content has-text-centered">
+                            <p>Jog → Walk</p>
+                            <img src="./static/gifs/berkeley_digit_jog-to-walk.gif" style="border-radius: 5px;">
+                        </div>
+                        <div class="column content has-text-centered">
+                            <p>Jog (increasing speed)</p>
+                            <img src="./static/gifs/berkeley_digit_increase-speed.gif" style="border-radius: 5px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- <section class="section">
+  <div class="container is-max-desktop">
+
+    <h2 class="title is-2" style="text-align: center;">Skill Interpolation</h2>
+    <div class="columns is-centered">
+      <p>
+        Unlike prior motion-tracking objectives, the GAN objective in AMP allows for smooth, natural-looking transitions between motions.
+      </p>
+    </div>
+    <div class="columns is-centered">
+      <div class="column content has-text-centered">
+        <img src="./static/gifs/berkeley_digit_walk-to-jog.gif">
+        <p>Walk → Jog</p>
+      </div>
+      <div class="column content has-text-centered">
+        <img src="./static/gifs/berkeley_digit_jog-to-walk.gif">
+        <p>Jog → Walk</p>
+      </div>
+      <div class="column content has-text-centered">
+        <img src="./static/gifs/berkeley_digit_increase-speed.gif">
+        <p>Jog (increasing speed)</p>
+      </div>
+    </div>
+    
+  </div>
+</section> -->
+
+
+    <!-- <section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered ">
+      <div class="column is-two-thirds">
+
+        <h2 class="title is-2">Acknowledgements</h2>
+        <div class="content">
+          <div class="content has-text-justified">
+            <p>
+              We thank Bike Zhang in the <a href="https://hybrid-robotics.berkeley.edu/">Hybrid Robotics Lab</a> at UC Berkeley for extensive help with setting up our hardware experiments. This project was partially completed during Michael's internship at Google Brain Robotics (now DeepMind), where he was supported by Jie Tan. Michael is supported by the National Science Defense and Engineering Graduate (NDSEG) Fellowship under the Office of Naval Research (ONR).
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+    <!-- <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{park2021nerfies,
+  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
+  title     = {Nerfies: Deformable Neural Radiance Fields},
+  journal   = {ICCV},
+  year      = {2021},
+}</code></pre>
+  </div>
+</section> -->
+
+
+    <footer class="footer">
+        <div class="container">
+            <!-- <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div> -->
+            <div class="columns is-centered">
+                <div class="column is-8">
+                    <div class="content has-text-centered">
+                        <p>
+                            Page template borrowed from <a href="https://github.com/nerfies/nerfies.github.io">
+                                <span class="'dnerf">Nerfies</span>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
