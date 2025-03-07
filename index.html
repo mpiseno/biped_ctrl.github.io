@@ -165,17 +165,7 @@
                     <h3 class="title is-3">Abstract</h3>
                     <div class="content has-text-justified">
                         <p>
-                            Obtaining controllers for high-dimensional continuous control of humanoid robots remains a
-                            challenging problem. Reinforcement learning has shown promise as a general method for
-                            learning locomotion controllers across a diverse range of different motions and in different
-                            environments, however specifying a reward function and transferring to real hardware remain
-                            open challenges. In this work, we build upon Adversarial Motion Priors (AMP) and introduce a
-                            framework that learns a reward function using a small amount of motion capture data. Using
-                            this reward function, we are able to learn a single multi-task controller for humanoid
-                            locomotion that produces natural-looking behavior for several different motions. Moreover,
-                            our controller produces energy-efficient motions without explicitly optimizing for such
-                            terms, is able to transition smoothly between different motions, and is capable of deploying
-                            on real hardware using a custom domain randomization procedure.
+                            Obtaining whole-body bipedal locomotion controllers that produce motions in the style of a human remains a challenging problem. To produce human-like locomotion, the robot must not only stabilize itself during movement but also execute complex whole-body motions that, while not necessarily aiding stability, enhance the expressiveness and energy efficiency of motion. Reinforcement learning has shown promise in learning locomotion controllers for dynamic motions, however, developing locomotion controllers for these stylized motions and transferring them to real hardware remains an open challenge. In this work, we introduce a framework for learning such a controller by leveraging Adversarial Motion Priors (AMP). Unlike other methods for stylized locomotion, AMP has the benefit of easily allowing for multiple motions, but often suffers from mode collapse to a single motion. To address this challenge, we adopt a Multi-Task RL setup, and demonstrate the added benefit of learning multiple skills for policy robustness. We validate the effectiveness of our method through extensive benchmarking on multiple bipedal humanoid models. Moreover, our controller generates energy-efficient motions without explicit optimization for energy consumption, transitions smoothly between different motions, and is deployable on real humanoid robots, demonstrating the first multi-skill locomotion control policy capable of handling diverse stylized humanoid motions.
                         </p>
                     </div>
                 </div>
